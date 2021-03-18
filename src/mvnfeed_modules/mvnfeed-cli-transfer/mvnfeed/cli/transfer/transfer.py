@@ -192,8 +192,15 @@ def _pom_artifact(artifact_fullname, artifact_path):
 def _java_artifacts(artifact_fullname, artifact_type, artifact_path, transfer_deps):
     return [
         {
-            'name': artifact_fullname + '.' + artifact_type,
+            'name': artifact_fullname + '.' + 'jar',
             'path': artifact_path,
+            'transfer_deps': transfer_deps,
+            'target': True
+        },
+        {
+            'name': artifact_fullname + '.' + 'aar',
+            'path': artifact_path,
+            'transfer_deps': transfer_deps,
             'target': True
         },
         {
@@ -208,6 +215,21 @@ def _java_artifacts(artifact_fullname, artifact_type, artifact_path, transfer_de
             'target': False
         },
         {
+            'name': artifact_fullname + '-debug.aar',
+            'path': artifact_path,
+            'target': False
+        },
+        {
+            'name': artifact_fullname + '-osx.jar',
+            'path': artifact_path,
+            'target': False
+        },
+        {
+            'name': artifact_fullname + '-release.aar',
+            'path': artifact_path,
+            'target': False
+        },
+        {
             'name': artifact_fullname + '-sources.jar',
             'path': artifact_path,
             'target': False
@@ -218,6 +240,7 @@ def _java_artifacts(artifact_fullname, artifact_type, artifact_path, transfer_de
             'target': False
         }
     ]
+
 
 
 def _untyped_artifacts(artifact_fullname, artifact_type, artifact_path, transfer_deps):
