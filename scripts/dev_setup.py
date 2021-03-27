@@ -21,7 +21,7 @@ def py_command(command):
 
 
 def pip_command(command):
-    py_command('-m pip ' + command)
+    py_command('-m pip ' + command + ' --user')
 
 
 packages = []
